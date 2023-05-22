@@ -9,6 +9,7 @@ import postcss from "rollup-plugin-postcss";
 //import { terser } from "rollup-plugin-terser";
 import terser from "@rollup/plugin-terser";
 import peerDepsExternal from "rollup-plugin-peer-deps-external";
+import scss from "rollup-plugin-scss";
 
 //const packageJson = require("./package.json");
 
@@ -34,6 +35,7 @@ export default [
       commonjs(),
       typescript({ tsconfig: "./tsconfig.json" }),
       postcss(),
+      // scss(),
       terser(),
     ],
   },
@@ -41,6 +43,6 @@ export default [
     input: "dist/esm/types/index.d.ts",
     output: [{ file: "dist/index.d.ts", format: "esm" }],
     plugins: [dts()],
-    external: [/\.css$/],
+    external: [/\.scss$/],
   },
 ];
